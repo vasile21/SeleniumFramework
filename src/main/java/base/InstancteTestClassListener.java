@@ -4,9 +4,10 @@
 
 package base;
 
-public interface InstancteTestClassListener {
-
-    void beforeClassSetup();
-
-    void afterClassSetup();
+public interface InstancteTestClassListener
+{
+	
+	void beforeClassSetup();
+	
+	void afterClassSetup();
 }

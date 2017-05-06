@@ -8,19 +8,19 @@ import base.BaseLogin;
 import org.junit.After;
 import org.junit.Test;
 import pageobjects.client.ClientsPage;
-import pageobjects.login.LogoutPage;
+import pageobjects.login.ClientLogoutPage;
 
 import static constants.messages.ApplicationMessages.LOGOUT_PAGE_HEADER;
 import static constants.messages.ApplicationMessages.SUCCESS_LOGOUT_MESSAGE;
-import static constants.messages.ApplicationUrl.URL_AFTER_LOGOUT;
+import static constants.messages.ApplicationUrls.URL_AFTER_LOGOUT;
 import static org.junit.Assert.assertEquals;
 import static providers.WebDriverProvider.getDriver;
 import static utilities.BrowserUtilities.getCurrentUrl;
 
-public class LogoutTestGUI extends BaseLogin{
+public class ClientLogoutTestGUI extends BaseLogin{
 
     private ClientsPage clientsPage;
-    private LogoutPage logoutPage;
+    private ClientLogoutPage clientLogoutPage;
 
     @Override
     @After
@@ -33,16 +33,15 @@ public class LogoutTestGUI extends BaseLogin{
     public void testUserLogout()
     {
         clientsPage = new ClientsPage();
-
+        clientLogoutPage = new ClientLogoutPage();
         clientsPage.userLogout();
         assertLogoutMessages();
     }
 
     private void assertLogoutMessages()
     {
-        logoutPage = new LogoutPage();
-        String actualLogoutPageTitle = logoutPage.getLogoutPageTtile();
-        String actualLogoutPageMsg = logoutPage.getLogoutSuccessMsg();
+        String actualLogoutPageTitle = clientLogoutPage.getLogoutPageTitle();
+        String actualLogoutPageMsg = clientLogoutPage.getLogoutSuccessMsg();
         String actualLogoutPageUrl = getCurrentUrl();
 
         assertEquals("Logout Page title is not correct!", LOGOUT_PAGE_HEADER, actualLogoutPageTitle);
