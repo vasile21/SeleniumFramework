@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static providers.WebDriverProvider.getDriver;
 import static providers.WebDriverWaitProvider.getWebDriverWait;
@@ -18,7 +19,7 @@ public class Form {
 
     public static void setFieldValue(WebElement element, String value)
     {
-        getWebDriverWait().until(visibilityOf(element));
+        getWebDriverWait().until(elementToBeClickable(element));
         element.click();
         element.clear();
         element.sendKeys(value);

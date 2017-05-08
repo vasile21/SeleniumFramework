@@ -13,7 +13,8 @@ import org.junit.Test;
 import pageobjects.client.ClientsPage;
 import pageobjects.login.ClientLoginPage;
 import pageobjects.login.ClientLogoutPage;
-import pageobjects.menus.DefaultMenuPage;
+import pageobjects.menus.ClientMenu;
+import pageobjects.menus.DefaultPage;
 
 import static constants.messages.ApplicationMessages.CLIENT_WELCOME_MESSAGE;
 import static constants.messages.ApplicationMessages.INVALID_LOGIN_MESSAGE;
@@ -26,12 +27,13 @@ import static utilities.BrowserUtilities.*;
 public class ClientLoginTestGUI extends BaseSelenium
 {
 	
-	private DefaultMenuPage defaultMenu;
+	private DefaultPage defaultMenu;
 	private ClientLoginPage clientLoginPage;
 	private ClientsPage clientsPage;
+	private ClientMenu clientMenu;
 	private ClientLogoutPage clientLogoutPage;
 	
-	private static final String VALID_CLIENT_MAIL = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_USER);
+	private static final String VALID_CLIENT_MAIL = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_MAIL);
 	private static final String VALID_CLIENT_PASSWORD = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_PASSWORD);
 	private static final String INVALID_CLIENT_PASSWORD = "ABCD";
 	
@@ -42,7 +44,7 @@ public class ClientLoginTestGUI extends BaseSelenium
 	@Before
 	public void setUp()
 	{
-		defaultMenu = new DefaultMenuPage();
+		defaultMenu = new DefaultPage();
 		clientLoginPage = new ClientLoginPage();
 		clientsPage = new ClientsPage();
 	}
@@ -66,7 +68,8 @@ public class ClientLoginTestGUI extends BaseSelenium
 		} finally
 		{
 			//clean-up
-			clientsPage.userLogout();
+			clientMenu = new ClientMenu();
+			clientMenu.clientLogout();
 		}
 	}
 	

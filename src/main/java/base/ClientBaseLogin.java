@@ -10,18 +10,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pageobjects.client.ClientsPage;
 import pageobjects.login.ClientLoginPage;
-import pageobjects.menus.DefaultMenuPage;
+import pageobjects.menus.ClientMenu;
+import pageobjects.menus.DefaultPage;
 
 import static providers.WebDriverProvider.getDriver;
 import static utilities.BrowserUtilities.navigateToTab;
 
-public class BaseLogin extends BaseSelenium
+public class ClientBaseLogin extends BaseSelenium
 {
-	private static final Logger LOGGER = LoggerFactory.getLogger(BaseLogin.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ClientBaseLogin.class);
 	
-	private final String userEmail = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_USER);
+	private final String userEmail = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_MAIL);
 	private final String userPassword = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_PASSWORD);
 	
 	private static final int DEFAULT_TAB = 0;
@@ -30,9 +30,9 @@ public class BaseLogin extends BaseSelenium
 	@Before
 	public void setUp()
 	{
-		DefaultMenuPage defaultMenuPage = new DefaultMenuPage();
+		DefaultPage defaultPage = new DefaultPage();
 		ClientLoginPage clientLoginPage = new ClientLoginPage();
-		defaultMenuPage.openLoginPage();
+		defaultPage.openLoginPage();
 		navigateToTab(LOGIN_TAB);
 		clientLoginPage.completeValidLoginForm(userEmail, userPassword, false);
 	}
@@ -40,8 +40,8 @@ public class BaseLogin extends BaseSelenium
 	@After
 	public void tearDown()
 	{
-		final ClientsPage clientsPage = new ClientsPage();
-		clientsPage.userLogout();
+		final ClientMenu clientsMenu = new ClientMenu();
+		clientsMenu.clientLogout();
 		getDriver().quit();
 	}
 }

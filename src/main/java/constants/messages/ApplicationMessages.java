@@ -6,6 +6,8 @@ package constants.messages;
 
 public class ApplicationMessages {
     public static final String CLIENT_WELCOME_MESSAGE = "Welcome Back, Vasile";
+    
+    public static final String USER_WELCOME_MESSAGE = "Hi, John Smith";
 
     public static final String INVALID_LOGIN_MESSAGE = "Login Details Incorrect. Please try again.";
 

@@ -4,7 +4,7 @@
 
 package contacts;
 
-import base.BaseLogin;
+import base.ClientBaseLogin;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import pageobjects.client.ClientsPage;
@@ -22,16 +22,14 @@ import static pageobjects.client.ContactsPage.*;
 import static utilities.XMLUtilities.getContactsChildNamesAndValues;
 import static utilities.XMLUtilities.readXMLFile;
 
-public class ContactsTestGUI extends BaseLogin
+public class ContactsTestGUI extends ClientBaseLogin
 {
-	
 	private ClientsPage clientsPage;
 	private ContactsPage contactsPage;
 	
 	@Override
 	public void setUp()
 	{
-		
 		super.setUp();
 		clientsPage = new ClientsPage();
 		contactsPage = new ContactsPage();
