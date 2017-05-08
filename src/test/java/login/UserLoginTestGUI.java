@@ -49,8 +49,8 @@ public class UserLoginTestGUI extends BaseSelenium
 	@Test
 	public void testUserLogin()
 	{
-		demoPage= defaultPage.openDemoPage();
-		userHomePage = demoPage.goToUserHomePage();
+		demoPage = defaultPage.openDemoPage();
+		userHomePage = demoPage.navigateToUserHomePage();
 		navigateToTab(HOMEPAGE_TAB);
 		userLoginpage = userHomePage.navigateToUserLoginPage();
 		userAccountpage = userLoginpage.userValidLogin(VALID_USER_MAIL, VALID_USER_PASSWORD);

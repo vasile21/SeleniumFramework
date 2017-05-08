@@ -13,6 +13,7 @@ import org.junit.Test;
 import pageobjects.client.ClientsPage;
 import pageobjects.login.ClientLoginPage;
 import pageobjects.login.ClientLogoutPage;
+import pageobjects.menus.ClientMenu;
 import pageobjects.menus.DefaultPage;
 
 import static constants.messages.ApplicationMessages.CLIENT_WELCOME_MESSAGE;
@@ -29,6 +30,7 @@ public class ClientLoginTestGUI extends BaseSelenium
 	private DefaultPage defaultMenu;
 	private ClientLoginPage clientLoginPage;
 	private ClientsPage clientsPage;
+	private ClientMenu clientMenu;
 	private ClientLogoutPage clientLogoutPage;
 	
 	private static final String VALID_CLIENT_MAIL = PropertiesConfig.getProperty(PropertiesKeys.APP_CLIENT_MAIL);
@@ -66,7 +68,8 @@ public class ClientLoginTestGUI extends BaseSelenium
 		} finally
 		{
 			//clean-up
-			clientsPage.userLogout();
+			clientMenu = new ClientMenu();
+			clientMenu.clientLogout();
 		}
 	}
 	

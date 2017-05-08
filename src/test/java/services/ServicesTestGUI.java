@@ -5,37 +5,35 @@
 package services;
 
 
-import base.BaseLogin;
+import base.ClientBaseLogin;
 import org.junit.Test;
-import pageobjects.client.ClientsPage;
-import pageobjects.services.ServicesPage;
+import pageobjects.client.actions.ServicesPage;
+import pageobjects.menus.ClientMenu;
 
 import java.util.Date;
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class ServicesTestGUI extends BaseLogin
+public class ServicesTestGUI extends ClientBaseLogin
 {
-	private ClientsPage clientsPage;
+	private ClientMenu clientMenu;
 	private ServicesPage servicesPage;
 	
 	@Override
 	public void setUp()
 	{
 		super.setUp();
-		clientsPage = new ClientsPage();
-		
-	}
 	
+		clientMenu = new ClientMenu();
+	}
 	
 	@Test
 	public void testServiceDateAscendingSorting()
 	{
-		servicesPage = clientsPage.openMyServicesPage();
+		servicesPage = clientMenu.navigateToServicesPage();
 		servicesPage.sortServicesDateAscending();
 		assertDateColumnSortedValues();
-		
 	}
 	
 	private void assertDateColumnSortedValues()

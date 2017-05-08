@@ -24,7 +24,7 @@ public class DemoPage
 	}
 	
 	
-	public UserHomePage goToUserHomePage()
+	public UserHomePage navigateToUserHomePage()
 	{
 		getWebDriverWait().until(elementToBeClickable(homepageLink));
 		homepageLink.click();

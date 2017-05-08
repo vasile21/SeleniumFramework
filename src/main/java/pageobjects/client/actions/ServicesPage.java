@@ -2,12 +2,12 @@
  * Created by Vasile.Vetisan on 5/6/2017.
  */
 
-package pageobjects.services;
+package pageobjects.client.actions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pageobjects.components.Table;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -24,11 +24,6 @@ import static utilities.WebElementUtilities.getWebElementByXpath;
 public class ServicesPage
 {
 	private final static String DATE_COLUMN = "//table[@id = 'tableServicesList']//th[@aria-label = 'Next Due Date: activate to sort column ascending']";
-	
-	
-	
-	@FindBy(xpath =".//tbody//tr[@role='row']")
-	private List<WebElement> servicesTableRows;
 	
 	public ServicesPage()
 	{
@@ -92,11 +87,12 @@ public class ServicesPage
 	
 	private List<WebElement> getServicesTableRows()
 	{
-		return servicesTableRows;
+		Table table = new Table();
+		return table.getTableRows();
 	}
 	
 	private WebElement getColumnCells(int rowIdx, int columnIdx)
 	{
-		return servicesTableRows.get(rowIdx).findElements(By.xpath(".//td")).get(columnIdx);
+		return getServicesTableRows().get(rowIdx).findElements(By.xpath(".//td")).get(columnIdx);
 	}
 }

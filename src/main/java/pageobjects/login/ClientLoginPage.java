@@ -42,16 +42,16 @@ public class ClientLoginPage
 		PageFactory.initElements(getDriver(), this);
 	}
 	
-	public void setEmail(String userEmail)
+	public void setEmail(String clientEmail)
 	{
-		setFieldValue(emailField, userEmail);
-		getWebDriverWait().until(textToBePresentInElementValue(emailField, userEmail));
+		setFieldValue(emailField, clientEmail);
+		getWebDriverWait().until(textToBePresentInElementValue(emailField, clientEmail));
 	}
 	
-	public void setPassword(String userPassword)
+	public void setPassword(String clientPassword)
 	{
-		setFieldValue(passwordField, userPassword);
-		getWebDriverWait().until(textToBePresentInElementValue(passwordField, userPassword));
+		setFieldValue(passwordField, clientPassword);
+		getWebDriverWait().until(textToBePresentInElementValue(passwordField, clientPassword));
 	}
 	
 	public String getInvalidLoginMsg()
@@ -78,22 +78,22 @@ public class ClientLoginPage
 		setCheckBox(rememberMeCheckbox);
 	}
 	
-	public void completeValidLoginForm(String userEmail, String userPassword, boolean rememberLogin)
+	public void completeValidLoginForm(String clientEmail, String clientPassword, boolean rememberLogin)
 	{
-		setEmail(userEmail);
-		setPassword(userPassword);
+		setEmail(clientEmail);
+		setPassword(clientPassword);
 		if (rememberLogin == true)
 		{
 			setRememberMeCheckbox();
 		}
 		submitValidLoginForm();
-		LOGGER.info("Logged in as: " + userEmail);
+		LOGGER.info("Client user logged in as: " + clientEmail);
 	}
 	
-	public void completeInvalidLoginForm(String userEmail, String userPassword)
+	public void completeInvalidLoginForm(String clientEmail, String clientPassword)
 	{
-		setEmail(userEmail);
-		setPassword(userPassword);
+		setEmail(clientEmail);
+		setPassword(clientPassword);
 		submitInvalidLoginForm();
 	}
 }

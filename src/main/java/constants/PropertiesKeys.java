@@ -15,4 +15,6 @@ public class PropertiesKeys {
     
     public static final String TIMEOUT_IN_SECONDS = "timeout.in.seconds";
     public static final String SLEEP_IN_MILLIS = "sleep.in.millis";
+    
+    public static final String DOWNLOAD_PATH = "download.path";
 }
